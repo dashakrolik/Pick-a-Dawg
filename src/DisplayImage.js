@@ -38,23 +38,6 @@ class DisplayImage extends Component {
   render() {
     return (
       <img src={this.state.image} alt={this.props.randomBreed}></img>
-      <form>
-        <div className='radio'>
-          <label>
-            <input type='radio' value={this.props.randomBreed} checked={true} />
-          </label>
-        </div>
-        <div className='radio'>
-          <label>
-            <input type='radio' value={this.props.randomBreed} checked={true} />
-          </label>
-        </div>
-        <div className='radio'>
-          <label>
-            <input type='radio' value={this.props.randomBreed} checked={true} />
-          </label>
-        </div>
-      </form>
       )
     }
   }
