@@ -10,29 +10,55 @@ class DisplayImage extends Component {
   //and it takes the picture of the corresponding breed
 
 //get data from the api
-componentDidMount() {
-  const randomNumber = Math.floor(Math.random()*3)
-  const randomBreed =  breeds[randomNumber]
-  request
-    .get(`https://dog.ceo/api/breed/${randomBreed}/images/random`)
-    .then(breedImageUrl => this.updateImages(breedImageUrl.message))
-    .catch(console.err)
-}
-
-updateImages(images) {
-  this.setState({
-    image: image
-  })
-}
-
-//display the image
-  render() {
-    return (
-      <img src={this.state.image} alt={this.props.randomBreed}>{this.props.randomBreed}</img>
-    )
+  componentDidMount() {
+    const randomNumber = Math.floor(Math.random()*3)
+    const randomBreed =  breeds[randomNumber]
+    request
+      .get(`https://dog.ceo/api/breed/${randomBreed}/images/random`)
+      .then(breedImageUrl => this.updateImages(breedImageUrl.message))
+      .catch(console.err)
   }
 
-}
+  updateImages(images) {
+    this.setState({
+      image: image
+    })
+  }
+
+//2 of the breeds are incorrect, below is what will evaluate that. Answer recieved should be stored in key 'answer' and passed as props
+  evaluateAnswer(answer) {
+    if (answer === this.randomBreed){
+      this.props.dispatch('dispatch action for correct answer')
+    } else {
+      this.props.dispatch('dispatch action for incorrect answer')
+    }
+  }
+
+//SEPARATE INTO TWO COMPONENTS; display the image, and the question - WORK ON LOGIC, RANDOM NUMBER CANNOT BE THE SAME
+  render() {
+    return (
+      <img src={this.state.image} alt={this.props.randomBreed}></img>
+      <form>
+        <div className='radio'>
+          <label>
+            <input type='radio' value={this.props.randomBreed} checked={true} />
+          </label>
+        </div>
+        <div className='radio'>
+          <label>
+            <input type='radio' value={this.props.randomBreed} checked={true} />
+          </label>
+        </div>
+        <div className='radio'>
+          <label>
+            <input type='radio' value={this.props.randomBreed} checked={true} />
+          </label>
+        </div>
+      </form>
+      )
+    }
+  }
+//ANSWER STATE SHOULD BE UPDATED AS WELL
 
 const mapStateToProps = (state) => {
   return {
@@ -42,4 +68,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(DisplayImage)
-  //2 breeds are incorrect
