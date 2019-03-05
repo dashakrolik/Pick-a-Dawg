@@ -1,0 +1,28 @@
+
+body {
+  padding: 20px;
+}
+
+.timer {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  width: 200px;
+  height: 30px;
+  background: #999;
+
+  position: relative;
+}
+
+.progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 60%;
+
+  background: red;
+}

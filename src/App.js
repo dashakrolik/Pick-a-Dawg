@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import './App.css';
 
-import DisplayImage from './DisplayImage'
-
+import PerformanceBar from './components/PerformanceBar'
 
 class App extends Component {
-  render() {
+
+  render () {
     return (
-      <div className="App">
+      <div>
+        <PerformanceBar />
+
       </div>
     );
   }
