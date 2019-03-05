@@ -9,8 +9,8 @@ import { connect } from 'react-redux'
 // import './App.css';
 import MainView from './components/MainView';
 // import DisplayImage from './DisplayImage'
-
-
+import PerformanceBar from './components/PerformanceBar'
+import './App.css'
 
 class App extends Component {
 
@@ -22,8 +22,7 @@ class App extends Component {
 
 
             <MainView />
-       
-
+        <PerformanceBar />
       </div>
     );
   }

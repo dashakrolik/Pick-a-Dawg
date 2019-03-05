@@ -1,4 +1,3 @@
-
 import { createStore, applyMiddleware, compose } from 'redux'
 // import levelUpReducer from './reducers/levelUpReducer' // which is shorthand for import ./reducers/index.js
 import ReduxThunk from 'redux-thunk'
@@ -13,3 +12,5 @@ const enhancer = compose(
 const store = createStore(reducer, enhancer)
 
 export default store
+
+
