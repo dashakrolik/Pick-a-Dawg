@@ -47,6 +47,7 @@ class DisplayImage extends Component {
 //SEPARATE INTO TWO COMPONENTS; display the image, and the question - WORK ON LOGIC, RANDOM NUMBER CANNOT BE THE SAME
   render() {
     return (
+
       <div>
       <img src={this.state.image} alt='dog'></img>
       <li src={this.state.breeds[0]}></li>
@@ -56,6 +57,7 @@ class DisplayImage extends Component {
       )
     }
   }
+
 //ANSWER STATE SHOULD BE UPDATED AS WELL
 
 const mapStateToProps = (state) => {
