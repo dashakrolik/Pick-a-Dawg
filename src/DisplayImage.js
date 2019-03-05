@@ -12,7 +12,7 @@ class DisplayImage extends Component {
 //get data from the api
   componentDidMount() {
     const randomNumber = Math.floor(Math.random()*3)
-    //const randomBreed =  this.props.breeds[randomNumber]
+    //const randomBreed =  this.props.breeds[randomNumber] - uncomment this to make it work once breeds are received
     const randomBreed = 'doberman'
     request
       .get(`https://dog.ceo/api/breed/${randomBreed}/images/random`)

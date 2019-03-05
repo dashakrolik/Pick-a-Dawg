@@ -1,7 +1,12 @@
-import React, { Component } from 'react';
-import './App.css';
-import DisplayContentContainer from './DisplayContentContainer'
+import * as React from 'react'
 
-class DisplayContent extends Components {
-  
+export default function DisplayContent(props) {
+  return (
+    <div>
+      <img src={this.state.image} alt="dog"></img>
+      <li text={this.state.breeds[0]}></li>
+      <li text={this.state.breeds[1]}></li>
+      <li text={this.state.breeds[2]}></li>
+    </div>
+  )
 }
