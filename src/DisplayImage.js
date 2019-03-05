@@ -41,11 +41,13 @@ class DisplayImage extends Component {
 //SEPARATE INTO TWO COMPONENTS; display the image, and the question - WORK ON LOGIC, RANDOM NUMBER CANNOT BE THE SAME
   render() {
     return (
-      <img src={this.state.image} alt='dog'></img>
-      <li src={this.state.dogs[0]}></li>
-      )
-    }
+      <>
+        <img src={this.state.image} alt='dog'></img>
+        <li src={this.state.dogs[0]}></li>
+      </>
+    )
   }
+}
 //ANSWER STATE SHOULD BE UPDATED AS WELL
 
 const mapStateToProps = (state) => {

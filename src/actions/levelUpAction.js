@@ -1,20 +1,15 @@
-import React, {Component} from 'react'
+
 import request from 'superagent'
+export const LEVEL_UP = 'LEVEL_UP'
 
-
-// ACTION: saves dog-breeds in Redux State
-export function levelUpSetImages(images) {
+export function levelUpSetBreeds(breeds) {
 	return {
-		type: 'LEVEL_UP',
-		payload: images
+		type: LEVEL_UP,
+		payload: breeds
 	}
 }
 
-// ACTION: includes auto-dispatch to get dog-breeds
-// should be called when SCORE is a multiple of 10 
-// check if auto-dispatch is excecuted correctly
-
-export function levelUpGetImages() {
+export function levelUpGetBreeds() {
 	return function (dispatch) {
 		request
 			.get('https://dog.ceo/api/breeds/list/all')
@@ -30,7 +25,7 @@ export function levelUpGetImages() {
 				])
 			})
 			.then(res => {
-				dispatch(levelUpSetImages(res))
+				dispatch(levelUpSetBreeds(res))
 			})
 
 	}
