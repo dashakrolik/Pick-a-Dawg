@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 import MainView from './components/MainView';
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
        
-       <div className='top-bar'>
+       {/* <div className='top-bar'>
             <div className='level-title-score'>
                 <span>Level 1</span>
                 <span>Title: Learn Dog breeds</span>
@@ -46,7 +47,9 @@ class App extends Component {
                     </div>                    
                     
                 </form>
-            </div>
+            </div> */}
+
+            <MainView />
        
       </div>
     );

@@ -1,42 +1,56 @@
-import * as React from './react'
+import * as React from 'react'
+import {connect} from 'react-redux'
+class MainView extends React.Component {
+    
 
-export default class MainView extends React.Component {
-    handleSubmit = this.handleSubmit.bind(this)
+    
+
+    handleClick = (event) => {
+       
+        const elValue = event.target.getAttribute('value')
+        const imgValue = {
+            src: 'https://images.dog.ceo/breeds/elkhound-norwegian/n02091467_7265.jpg',
+            id : 'breed 1'
+        }
+        let payload
+        if(imgValue.id === elValue){
+            payload=true
+            this.props.dispatch({
+                type:'COORRECT_ANSWER',
+                payload: payload
+                }
+            )
+            
+        } else { 
+            this.props.dispatch({
+                type:'INCOORRECT_ANSWER',
+                payload: payload
+                }
+            )
+      
+    } }
 
     render(){
         return(
             <div className='mainView'>
                 <div className='breedImage'>
-                    <img src='https://images.dog.ceo/breeds/elkhound-norwegian/n02091467_7265.jpg' alt=''/>
+                    <img value='breed 1' src='https://images.dog.ceo/breeds/elkhound-norwegian/n02091467_7265.jpg' alt=''/>
                 </div>
                 <span>Breed Name</span>
                 <span>Hint</span>
-                <form>
-                    <div className='radio'>
-                        <label>
-                            <input type='radio' value='Breed 1' checked={true} />
-                            Breed 1
-                        </label>
-                    </div>
+            
+                <ul>
+                    <li value={'breed 1'} key={'breed 1'} onClick={this.handleClick}>Breed 1</li>
+                    <li  value={'breed 2'} key= {'breed 2'} onClick={this.handleClick}>Breed 2</li>
+                    <li value={'breed 3'} key = {'breed 3'} onClick={this.handleClick}>Breed 3</li>
 
-                    <div className='radio'>
-                        <label>
-                            <input type='radio' value='Breed 2' checked={true} />
-                            Breed 2
-                        </label>
-                    </div>  
-
-                    <div className='radio'>
-                        <label>
-                            <input type='radio' value='Breed 3' checked={true} />
-                            Breed 3
-                        </label>
-                    </div>                    
-                    
-                </form>
+                </ul>
             </div>
         )
     }
 
 }
 
+
+
+export default connect()(MainView)
