@@ -9,6 +9,7 @@ class DisplayContentContainer extends Component {
   componentDidMount() {
     const randomNumber = Math.floor(Math.random()*3)
     const randomBreed =  this.props.breeds[randomNumber]
+
     request
       .get(`https://dog.ceo/api/breed/${randomBreed}/images/random`)
       .then(image => this.updateImage(image.message)) //this should be dispatch
@@ -17,7 +18,7 @@ class DisplayContentContainer extends Component {
 
   updateImage(image) {
     console.log('wooot')
-    console.log(image)
+    console.log(image, 'im the image')
     this.props.dispatch({
       type: 'UPDATE_IMAGE',
       payload: image

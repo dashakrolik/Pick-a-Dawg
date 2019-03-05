@@ -12,6 +12,6 @@ const enhancer = compose(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-const store = createStore(DisplayContentReducer, enhancer)
+const store = createStore(reducer, enhancer)
 
 export default store
