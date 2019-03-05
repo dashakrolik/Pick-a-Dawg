@@ -25,19 +25,19 @@ class DisplayContentContainer extends Component {
     })
   }
 
-  evaluateAnswer(answer) {
-    if (this.props.answer === this.randomBreed){
-      this.props.dispatch({
-        type: 'CORRECT_ANSWER_ALERT',
-        payload: console.log(answer)
-      })
-    } else {
-      this.props.dispatch({
-        type: 'WRONG_ANSWER_ALERT',
-        payload: console.log('this is wrong')
-      })
-    }
-  }
+  // evaluateAnswer(answer) {
+  //   if (this.props.answer === this.randomBreed){
+  //     this.props.dispatch({
+  //       type: 'CORRECT_ANSWER_ALERT',
+  //       payload: console.log(answer)
+  //     })
+  //   } else {
+  //     this.props.dispatch({
+  //       type: 'WRONG_ANSWER_ALERT',
+  //       payload: console.log('this is wrong')
+  //     })
+  //   }
+  // }
 
   render() {
     return <DisplayContent answer={this.props.answer} image={this.props.image} breeds={this.props.breeds}/>

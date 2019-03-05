@@ -1,7 +1,7 @@
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case 'UPDATE_IMAGE':
-    return {...state, ...action.payload}
+    return action.payload
 
     case 'CORRECT_ANSWER_ALERT':
     return action.payload

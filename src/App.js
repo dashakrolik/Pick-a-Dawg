@@ -7,6 +7,7 @@ import MainView from './components/MainView'
 
 
 
+
 // import './App.css';
 
 import DisplayImage from './DisplayImage'
@@ -18,6 +19,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <DisplayImage />
 <MainView />
   <PerformanceBar />
   <button onClick={()=> this.props.levelUpGetBreeds()} >KLIK HERE</button>

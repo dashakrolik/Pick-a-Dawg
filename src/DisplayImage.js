@@ -12,20 +12,19 @@ class DisplayImage extends Component {
 //get data from the api
   componentDidMount() {
     const randomNumber = Math.floor(Math.random()*3)
-    //const randomBreed =  this.props.breeds[randomNumber] - uncomment this to make it work once breeds are received
-    const randomBreed = 'chihuahua'
+    const randomBreed =  this.props.breeds[randomNumber]
+
     request
       .get(`https://dog.ceo/api/breed/${randomBreed}/images/random`)
-      .then(image => this.updateImage(image.message)) //this should be dispatch
+      .then(response => this.updateImage(JSON.parse(response.text).message)) //this should be dispatch
       .catch(console.err)
   }
 
-  updateImage(image) {
-    console.log('wooot')
-    console.log(image)
+  updateImage(response) {
+    console.log((response), typeof response.message)
     this.props.dispatch({
       type: 'UPDATE_IMAGE',
-      payload: image
+      payload: response
     })
   }
 
@@ -46,14 +45,13 @@ class DisplayImage extends Component {
 
 //SEPARATE INTO TWO COMPONENTS; display the image, and the question - WORK ON LOGIC, RANDOM NUMBER CANNOT BE THE SAME
   render() {
-    return (
+    const { breeds } = this.props
 
-      <div>
-      <img src={this.state.image} alt='dog'></img>
-      <li src={this.state.breeds[0]}></li>
-      <li src={this.state.breeds[1]}></li>
-      <li src={this.state.breeds[2]}></li>
-      </div>
+    if (breeds) {
+      return (<h1>Oi!!!!!!!!!!!!!</h1>)
+    }
+    return (
+      null
       )
     }
   }
@@ -62,7 +60,7 @@ class DisplayImage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    breeds: state.breeds,
+    breeds: state.levelUpReducer,
     image: state.image
   }
 }
