@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-
-import DisplayImage from './DisplayImage'
-
+import PerformanceBar from './components/PerformanceBar'
+import './App.css'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <PerformanceBar />
       </div>
     );
   }

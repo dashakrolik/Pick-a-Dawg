@@ -1,8 +1,8 @@
 import { createStore } from 'redux'
-import reducer from './reducers/reducer' // which is shorthand for import ./reducers/index.js
+// import reducer from '.'
 
 const enhancer = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
-const store = createStore(reducer, enhancer)
+const store = createStore(enhancer)
 
 export default store
