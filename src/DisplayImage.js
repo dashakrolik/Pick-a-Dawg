@@ -42,6 +42,7 @@ class DisplayImage extends Component {
   render() {
     return (
       <img src={this.state.image} alt='dog'></img>
+      <li src={this.state.dogs[0]}></li>
       )
     }
   }
