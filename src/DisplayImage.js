@@ -3,7 +3,7 @@ import request from 'superagent'
 import { connect } from 'react-redux'
 
 class DisplayImage extends Component {
-  state = { images: null }
+  state = { image: null }
   //select one of the 3 breeds that are already in the the state.
   //randomly pick one
   //use vncent's Link
@@ -12,16 +12,20 @@ class DisplayImage extends Component {
 //get data from the api
   componentDidMount() {
     const randomNumber = Math.floor(Math.random()*3)
-    const randomBreed =  this.props.breeds[randomNumber]
+    //const randomBreed =  this.props.breeds[randomNumber]
+    const randomBreed = 'doberman'
     request
       .get(`https://dog.ceo/api/breed/${randomBreed}/images/random`)
-      .then(breedImageUrl => this.updateImages(breedImageUrl.message))
+      .then(image => this.updateImage(image.message)) //this should be dispatch
       .catch(console.err)
   }
 
-  updateImages(images) {
-    this.setState({
-      image: this.breedImageUrl
+  updateImage(image) {
+    console.log('wooot')
+    console.log(image)
+    this.props.dispatch({
+      type: 'UPDATE_IMAGE',
+      payload: image
     })
   }
 
