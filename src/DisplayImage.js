@@ -22,11 +22,11 @@ class DisplayImage extends Component {
 
   updateImage(image) {
     console.log('wooot')
+    console.log(image)
     this.props.dispatch({
       type: 'UPDATE_IMAGE',
       payload: image
     })
-    console.log(image)
   }
 
 //2 of the breeds are incorrect, below is what will evaluate that. Answer recieved should be stored in key 'answer' and passed as props

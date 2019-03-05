@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import DisplayImage from './DisplayImage'
+import DisplayContentContainer from './DisplayContentContainer'
+
+class DisplayContent extends Components {
+  
+}
