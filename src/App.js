@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
-import './App.css';
+// import './App.css';
 import MainView from './components/MainView';
+// import DisplayImage from './DisplayImage'
 
 
 class App extends Component {

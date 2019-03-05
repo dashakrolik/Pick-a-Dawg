@@ -1,5 +1,6 @@
 import * as React from 'react'
 import {connect} from 'react-redux'
+
 class MainView extends React.Component {
     
 
@@ -12,19 +13,19 @@ class MainView extends React.Component {
             src: 'https://images.dog.ceo/breeds/elkhound-norwegian/n02091467_7265.jpg',
             id : 'breed 1'
         }
-        let payload
+        
         if(imgValue.id === elValue){
-            payload=true
+            
             this.props.dispatch({
-                type:'COORRECT_ANSWER',
-                payload: payload
+                type:'CORRECT_ANSWER',
+                payload: true
                 }
             )
             
         } else { 
             this.props.dispatch({
-                type:'INCOORRECT_ANSWER',
-                payload: payload
+                type:'INCORRECT_ANSWER',
+                payload: false
                 }
             )
       
@@ -51,6 +52,12 @@ class MainView extends React.Component {
 
 }
 
+const mapStateToProps = (state) => {
+    console.log(state);
+    
+    return {
+        state
+    }
+}
 
-
-export default connect()(MainView)
+export default connect(mapStateToProps)(MainView)
