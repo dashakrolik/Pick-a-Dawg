@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DisplayImage from './DisplayImage'
+import DisplayContentContainer from './components/DisplayContentContainer'
 
 
 class App extends Component {
@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div className="App">
 
-        <DisplayImage />
+        <DisplayContentContainer />
       </div>
     );
   }
