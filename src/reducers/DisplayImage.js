@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import request from 'superagent'
 import { connect } from 'react-redux'
-import MainView from './components/MainView'
+import MainView from '../components/MainView'
 
 
 // randomNumbers cannot be the same --> fix an if function for this.
@@ -61,13 +61,6 @@ class DisplayImage extends Component {
             />
           </div>
       )
-      //   <div>
-      //     <img src={this.props.image}></img>
-      //     <h1>{this.randomBreed1}</h1>
-      //     <h1 value={breeds[randomNumber1]}>{breeds[randomNumber1]} im breed 1</h1>
-      //     <h1 value={breeds[randomNumber2]}>{breeds[randomNumber2]}im breed 2</h1>
-      //     <h1 value={breeds[randomNumber3]}>{breeds[randomNumber3]} im breed 3</h1>
-      // </div>
     }
     return (
       null
