@@ -4,10 +4,12 @@ import DisplayContentReducer from './DisplayContentReducer'
 // import reducer from './reducer'
 import levelUpReducer from './levelUpReducer'
 import answerBoolean from './answerBoolean'
+import shownBreeds from './shownBreeds'
 
 export default combineReducers({
     // reducer,
     levelUpReducer,
     answerBoolean,
-    DisplayContentReducer
+    DisplayContentReducer,
+    shownBreeds
 })

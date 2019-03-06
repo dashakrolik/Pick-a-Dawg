@@ -20,15 +20,42 @@ class MainView extends React.Component {
        }
       )  
 		} }
+  componentDidMount() {    
+    this.addBreed(this.props.correctAnswer)
+    this.getHint(this.props.correctAnswer)
+  }
+ 
 
-	render(){
+  getHint = (answerString)=> {
+
+    const hint = `Hint: The name starts with: ${answerString[0]}`
+
+    if(this.props.shownBreedList.indexOf(answerString)) {      
+      return hint
+    }
+    // console.log(this.props.correctAnswer, 'the actual correct answer');
+    
+    return hint
+  }
+
+  addBreed = (breed) => {
+      this.props.dispatch({
+        type:'ADD_BREED',
+        payload:breed
+      })
+    }
+    
+
+	render(){  
     return(
       <div className='mainView'>
         <div className='breedImage'>
           <img src={this.props.image} alt=''/>
           </div>
             <span>Breed Name</span>
-            <span>Hint</span>
+            
+            <span>  hint: {this.getHint(this.props.correctAnswer)}</span>
+            <span ></span>
        
             <ul>
               <li value={this.props.answer1} onClick={this.handleClick}>{this.props.answer1}</li>
@@ -45,7 +72,8 @@ const mapStateToProps = (state) => {
     // console.log(state, 'im state of MainView');
     
     return {
-        state
+        state,
+        shownBreedList:state.shownBreeds
     }
 }
 

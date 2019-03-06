@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import {levelUpSetBreeds, levelUpGetBreeds} from './actions/levelUpAction'
-// import DisplayImage from './DisplayImage'
+import DisplayImage from './components/DisplayImage'
 import { connect } from 'react-redux'
-import MainView from './components/MainView'
+// import MainView from './components/MainView'
 
 
 
 
 // import './App.css';
 
-import DisplayImage from './reducers/DisplayImage'
+
 import PerformanceBar from './components/PerformanceBar'
 import './App.css'
 
