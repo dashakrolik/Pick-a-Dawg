@@ -29,26 +29,32 @@ class DisplayImage extends Component {
   }
 
 //2 of the breeds are incorrect, below is what will evaluate that. Answer recieved should be stored in key 'answer' and passed as props
-  evaluateAnswer(answer) {
-    if (this.props.answer === this.randomBreed){
-      this.props.dispatch({
-        type: 'CORRECT_ANSWER_ALERT',
-        payload: console.log(answer)
-      })
-    } else {
-      this.props.dispatch({
-        type: 'WRONG_ANSWER_ALERT',
-        payload: console.log('this is wrong')
-      })
-    }
-  }
+  // evaluateAnswer(answer) {
+  //   if (this.props.answer === this.randomBreed){
+  //     this.props.dispatch({
+  //       type: 'CORRECT_ANSWER_ALERT',
+  //       payload: console.log(answer)
+  //     })
+  //   } else {
+  //     this.props.dispatch({
+  //       type: 'WRONG_ANSWER_ALERT',
+  //       payload: console.log('this is wrong')
+  //     })
+  //   }
+  // }
 
 //SEPARATE INTO TWO COMPONENTS; display the image, and the question - WORK ON LOGIC, RANDOM NUMBER CANNOT BE THE SAME
   render() {
     const { breeds } = this.props
 
     if (breeds) {
-      return (<h1>Oi!!!!!!!!!!!!!</h1>)
+      return (
+        <div>
+          <img src={this.props.image}></img>
+        <h1>{this.props.breeds[0]}</h1>
+        <h1>{this.props.breeds[1]}</h1>
+        <h1>{this.props.breeds[2]}</h1>
+      </div>)
     }
     return (
       null
@@ -61,7 +67,7 @@ class DisplayImage extends Component {
 const mapStateToProps = (state) => {
   return {
     breeds: state.levelUpReducer,
-    image: state.image
+    image: state.DisplayContentReducer
   }
 }
 
