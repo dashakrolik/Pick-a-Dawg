@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import MainView from '../components/MainView'
 
 class DisplayImage extends Component {
-  state = { 
+  state = {
     image: null,
   }
 
@@ -13,7 +13,6 @@ class DisplayImage extends Component {
   }
 
   nextQuestion() {
-    console.log(this.props.breeds,'im breeds in nextQuestion')
     let lengthBreedsArray = this.props.breeds.length
     const randomNumber1 = Math.floor(Math.random()*lengthBreedsArray)
     const randomNumber2 = Math.floor(Math.random()*lengthBreedsArray)
@@ -44,11 +43,10 @@ getImage = () => {
       }))
       .catch(console.err)
 
-      
-  } 
-  
+
+  }
+
   render() {
-    console.log(this.props,'im the props in DisplayImage in render()')
     const { breeds } = this.props
 
     if (breeds) {

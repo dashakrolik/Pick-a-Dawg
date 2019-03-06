@@ -1,9 +1,9 @@
 import * as React from 'react'
 import {connect} from 'react-redux'
 import ShowCorrectAnswer from '../actions/ShowCorrectAnswer'
+import KeyHandler, { KEYPRESS } from 'react-key-handler'
 
 class MainView extends React.Component {
-
  handleClick = (event) => {
 
   this.props.nextQuestion()
@@ -25,7 +25,6 @@ class MainView extends React.Component {
 		} }
 
 	render(){
-    console.log(this.props,'im the props in MainView')
     return(
       <div className='mainView'>
         <div className='breedImage'>
@@ -38,6 +37,7 @@ class MainView extends React.Component {
               <li value={this.props.answer1} onClick={this.handleClick}>{this.props.answer1}</li>
               <li value={this.props.answer2} onClick={this.handleClick}>{this.props.answer2}</li>
               <li value={this.props.answer3} onClick={this.handleClick}>{this.props.answer3}</li>
+              <KeyHandler keyEventName={KEYPRESS} code='ArrowUp' onKeyHandle={console.log('I am a key')} />
             </ul>
             <ShowCorrectAnswer correctAnswer={this.props.correctAnswer}/>
             </div>
