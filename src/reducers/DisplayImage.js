@@ -25,19 +25,19 @@ class DisplayImage extends Component {
       .get(`https://dog.ceo/api/breed/${this.randomBreed1}/images/random`)
       .then(response => this.updateImage(JSON.parse(response.text).message)) //this should be dispatch
       .catch(console.err)
-      
-  } 
-  
 
-  componentDidMount() {
-    this.setAnswer()
- 
   }
 
 
-  
+  componentDidMount() {
+    this.setAnswer()
+
+  }
+
+
+
   updateImage(response) {
- 
+
     this.props.dispatch({
       type: 'UPDATE_IMAGE',
       payload: response
@@ -47,12 +47,11 @@ class DisplayImage extends Component {
 
   render() {
     const { breeds } = this.props
-    
+
     if (breeds) {
-      console.log(this.props.image,'this should the image')
       return (
         <div>
-          <MainView 
+          <MainView
             correctAnswer={this.randomBreed1}
             image={this.props.image}
             answer1={breeds[randomNumber1]}
@@ -78,4 +77,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(DisplayImage)
-
