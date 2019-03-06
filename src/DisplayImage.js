@@ -1,60 +1,88 @@
 import React, {Component} from 'react'
 import request from 'superagent'
 import { connect } from 'react-redux'
+import MainView from './components/MainView'
+
+
+// randomNumbers cannot be the same --> fix an if function for this.
+
+const randomNumber1 = Math.floor(Math.random()*3)
+const randomNumber2 = Math.floor(Math.random()*3)
+const randomNumber3 = Math.floor(Math.random()*3)
+
 
 class DisplayImage extends Component {
   state = { image: null }
-  //select one of the 3 breeds that are already in the the state.
-  //randomly pick one
-  //use vncent's Link
-  //and it takes the picture of the corresponding breed
 
-//get data from the api
-  componentDidMount() {
-    const randomNumber = Math.floor(Math.random()*3)
-    //const randomBreed =  this.props.breeds[randomNumber]
-    const randomBreed = 'doberman'
+  randomBreed1 =  this.props.breeds[randomNumber1]
+  // randomBreed1 is the CORRECT ANSWER
+  randomBreed2 =  this.props.breeds[randomNumber2]
+  randomBreed3 =  this.props.breeds[randomNumber3]
+
+  setAnswer = () => {
+
     request
-      .get(`https://dog.ceo/api/breed/${randomBreed}/images/random`)
-      .then(image => this.updateImage(image.message)) //this should be dispatch
+      .get(`https://dog.ceo/api/breed/${this.randomBreed1}/images/random`)
+      .then(response => this.updateImage(JSON.parse(response.text).message)) //this should be dispatch
       .catch(console.err)
+      
+  } 
+  
+
+  componentDidMount() {
+    this.setAnswer()
+ 
   }
 
-  updateImage(image) {
-    console.log('wooot')
-    console.log(image)
+
+  
+  updateImage(response) {
+ 
     this.props.dispatch({
       type: 'UPDATE_IMAGE',
-      payload: image
+      payload: response
     })
   }
 
-//2 of the breeds are incorrect, below is what will evaluate that. Answer recieved should be stored in key 'answer' and passed as props
-  evaluateAnswer(answer) {
-    if (this.props.answer === this.randomBreed){
-      this.props.dispatch('dispatch action for correct answer')
-    } else {
-      this.props.dispatch('dispatch action for incorrect answer')
+
+  render() {
+    const { breeds } = this.props
+    
+    if (breeds) {
+      console.log(this.props.image,'this should the image')
+      return (
+        <div>
+          <MainView 
+            correctAnswer={this.randomBreed1}
+            image={this.props.image}
+            answer1={breeds[randomNumber1]}
+            answer2={breeds[randomNumber2]}
+            answer3={breeds[randomNumber3]}
+            />
+          </div>
+      )
+      //   <div>
+      //     <img src={this.props.image}></img>
+      //     <h1>{this.randomBreed1}</h1>
+      //     <h1 value={breeds[randomNumber1]}>{breeds[randomNumber1]} im breed 1</h1>
+      //     <h1 value={breeds[randomNumber2]}>{breeds[randomNumber2]}im breed 2</h1>
+      //     <h1 value={breeds[randomNumber3]}>{breeds[randomNumber3]} im breed 3</h1>
+      // </div>
+    }
+    return (
+      null
+      )
     }
   }
 
-//SEPARATE INTO TWO COMPONENTS; display the image, and the question - WORK ON LOGIC, RANDOM NUMBER CANNOT BE THE SAME
-  render() {
-    return (
-      <>
-        <img src={this.state.image} alt='dog'></img>
-        <li src={this.state.dogs[0]}></li>
-      </>
-    )
-  }
-}
-//ANSWER STATE SHOULD BE UPDATED AS WELL
+
 
 const mapStateToProps = (state) => {
   return {
-    breeds: state.breeds,
-    image: state.image
+    breeds: state.levelUpReducer,
+    image: state.DisplayContentReducer
   }
 }
 
 export default connect(mapStateToProps)(DisplayImage)
+
