@@ -8,6 +8,10 @@ const reducer = (state = initialState, action = {}) => {
 
     case 'WRONG_ANSWER_ALERT':
     return console.log('wrong')
+
+    case 'UPDATE_ANSWER':
+    return action.payload
+
   default:
     return state
   }
