@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <DisplayImage />
-<MainView />
+
   <PerformanceBar />
   <button onClick={()=> this.props.levelUpGetBreeds()} >KLIK HERE</button>
 

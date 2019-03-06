@@ -49,6 +49,7 @@ class DisplayImage extends Component {
     const { breeds } = this.props
     
     if (breeds) {
+      console.log(this.props.image,'this should the image')
       return (
         <div>
           <MainView 
