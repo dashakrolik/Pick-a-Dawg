@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import request from 'superagent'
 import { connect } from 'react-redux'
+import MainView from './components/MainView'
 
 class DisplayImage extends Component {
   state = { image: null }
@@ -50,11 +51,8 @@ class DisplayImage extends Component {
     if (breeds) {
       return (
         <div>
-          <img src={this.props.image}></img>
-        <h1>{this.props.breeds[0]}</h1>
-        <h1>{this.props.breeds[1]}</h1>
-        <h1>{this.props.breeds[2]}</h1>
-      </div>)
+          <MainView breeds={this.props.breeds} image={this.props.image}/>
+        </div>)
     }
     return (
       null
