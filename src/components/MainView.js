@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 class MainView extends React.Component {
     
  handleClick = (event) => {
-       
+    // One single event triggers multiple dispatches on Redux store. In this case Tonia's answerBoolean and Duc's performance bar are updated. REMEMBER: type's name should be identical!!!
   const elValue = event.target.getAttribute('value')
   const correctAnswer = this.props.correctAnswer
         
@@ -42,8 +42,6 @@ class MainView extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state, 'im state of MainView');
-    
     return {
         state
     }

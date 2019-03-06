@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import {levelUpSetBreeds, levelUpGetBreeds} from './actions/levelUpAction'
-// import DisplayImage from './DisplayImage'
 import { connect } from 'react-redux'
 import MainView from './components/MainView'
-
-
-
-
-// import './App.css';
-
 import DisplayImage from './reducers/DisplayImage'
 import PerformanceBar from './components/PerformanceBar'
 import './App.css'
@@ -19,10 +12,8 @@ class App extends Component {
     return (
       <div className="App">
         <DisplayImage />
-
-  <PerformanceBar />
-  <button onClick={()=> this.props.levelUpGetBreeds()} >KLIK HERE</button>
-
+        <PerformanceBar />
+        <button onClick={()=> this.props.levelUpGetBreeds()} >KLIK HERE</button>
       </div>
     );
   }

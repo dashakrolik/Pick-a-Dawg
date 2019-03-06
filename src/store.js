@@ -1,11 +1,8 @@
-
 import DisplayContentReducer from './reducers/DisplayContentReducer' // which is shorthand for import ./reducers/index.js
 import { createStore, applyMiddleware, compose } from 'redux'
 // import levelUpReducer from './reducers/levelUpReducer' // which is shorthand for import ./reducers/index.js
 import ReduxThunk from 'redux-thunk'
 import reducer from './reducers' // which is shorthand for import ./reducers/index.js
-
-
 
 const enhancer = compose(
     applyMiddleware(ReduxThunk),
