@@ -43,13 +43,14 @@ getImage = () => {
         image:res
       }))
       .catch(console.err)
+
       
   } 
   
   render() {
     console.log(this.props,'im the props in DisplayImage in render()')
     const { breeds } = this.props
-    
+
     if (breeds) {
       return (
         <div>
@@ -78,4 +79,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(DisplayImage)
-
