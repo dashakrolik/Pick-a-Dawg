@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 class MainView extends React.Component {
     
  handleClick = (event) => {
-       
+  this.props.nextQuestion()
   const elValue = event.target.getAttribute('value')
   const correctAnswer = this.props.correctAnswer
         
@@ -22,6 +22,7 @@ class MainView extends React.Component {
 		} }
 
 	render(){
+    console.log(this.props,'im the props in MainView')
     return(
       <div className='mainView'>
         <div className='breedImage'>
