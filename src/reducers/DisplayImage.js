@@ -14,6 +14,7 @@ class DisplayImage extends Component {
 
   nextQuestion() {
     console.log(this.props.breeds,'im breeds in nextQuestion')
+    console.log('nextQuestion is called')
     let lengthBreedsArray = this.props.breeds.length
     const randomNumber1 = Math.floor(Math.random()*lengthBreedsArray)
     const randomNumber2 = Math.floor(Math.random()*lengthBreedsArray)
@@ -48,7 +49,6 @@ getImage = () => {
   } 
   
   render() {
-    console.log(this.props,'im the props in DisplayImage in render()')
     const { breeds } = this.props
 
     if (breeds) {
@@ -60,7 +60,7 @@ getImage = () => {
             answer1={breeds[this.state.randomNumber1]}
             answer2={breeds[this.state.randomNumber2]}
             answer3={breeds[this.state.randomNumber3]}
-            nextQuestion={() => this.nextQuestion}
+            nextQuestion={() => this.nextQuestion()}
             />
           </div>
       )

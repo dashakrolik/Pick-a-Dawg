@@ -6,7 +6,7 @@ class MainView extends React.Component {
 
  handleClick = (event) => {
 
-  this.props.nextQuestion()
+  setTimeout(this.props.nextQuestion, 2000)
 
   const elValue = event.target.getAttribute('value')
   const correctAnswer = this.props.correctAnswer
