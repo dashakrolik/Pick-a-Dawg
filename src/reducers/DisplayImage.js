@@ -41,8 +41,7 @@ class DisplayImage extends Component {
       secondShuffledString: shuffledArray[1]
 
     },
-    () => {this.getImage(shuffledArray[0])},
-    () => {this.getThreeImages(shuffledArray[1])}
+    () => {this.getImage(shuffledArray[0])}
     )
 
     this.props.dispatch({ type: 'SHOW_NOTHING' })
@@ -58,19 +57,7 @@ class DisplayImage extends Component {
       .catch(console.err)
   }
 
-  getThreeImages = (secondShuffledString) => {
-    request
-      .get(`https://dog.ceo/api/breed/${secondShuffledString}/images/random`)
-      .then(response => JSON.parse(response.text).message)
-      .then(res => this.setState({
-        image1:res
-      }))
-      .catch(console.err)
-  }
-
   render() {
-    console.log(this.state.image1)
-    console.log(this.state.image)
     console.log(this.state.answerArray[0])
     console.log(this.state.answerArray[1])
     const { breeds } = this.props
@@ -81,7 +68,6 @@ class DisplayImage extends Component {
             correctAnswer={this.state.correctAnswer}
             secondShuffledString={this.state.secondShuffledString}
             image={this.state.image}
-            image1={this.state.image1}
 
             answer1={this.state.answerArray[0]}
             answer2={this.state.answerArray[1]}
