@@ -12,8 +12,9 @@ class MainView extends React.Component {
   }
 
 
+
+
  handleClick = (event) => {
-  // One single event triggers multiple dispatches on Redux store. In this case Tonia's answerBoolean and Duc's performance bar are both updated. REMEMBER: type's name should be identical!!!
   setTimeout(this.props.nextQuestion, 2000)
 
   const elValue = event.target.getAttribute('value')
@@ -25,23 +26,28 @@ class MainView extends React.Component {
   })
 
   if(correctAnswer === elValue){
-
+  
     this.props.dispatch({
       type:'CORRECT_ANSWER',
       payload: true
    })
 
-   if(this.props.streak !==0 && Number.isInteger(this.props.streak/2)){
+   if(this.props.streak !==0 && Number.isInteger(this.props.streak/9)){
+     // the number can be adjest on when level up (do the amount of clicks minus 1)
     this.props.dispatch(levelUpGetBreeds())
-  }
+      
+    this.props.dispatch({
+      type:'LEVEL_COUNT',
+      payload: 1
+    })
 
-   if(this.props.streak === 3){
     this.props.dispatch({
       type:'RESET_STREAK',
       payload: 0
     })
+
+
   }
-    // console.log(Number.isInteger(this.props.streak !==0 && Number.isInteger(this.props.streak/2)))
   
     } else {
 

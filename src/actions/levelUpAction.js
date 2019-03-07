@@ -2,7 +2,6 @@ import request from 'superagent'
 export const LEVEL_UP = 'LEVEL_UP'
 
 export const levelUpSetBreeds = (breeds) => {
-	console.log('levelUp is called')
 	return {
 		type: LEVEL_UP,
 		payload: breeds
