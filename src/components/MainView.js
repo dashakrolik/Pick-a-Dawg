@@ -1,7 +1,10 @@
 import * as React from 'react'
 import {connect} from 'react-redux'
 import ShowCorrectAnswer from '../actions/ShowCorrectAnswer'
+
 import { levelUpGetBreeds } from '../actions/levelUpAction'
+
+
 
 class MainView extends React.Component {
 
@@ -10,7 +13,6 @@ class MainView extends React.Component {
 
     return `Hint: The name starts with: ${answerString[0]}`
   }
-
 
 
 
@@ -71,10 +73,11 @@ class MainView extends React.Component {
             <span>Breed Name</span>
             <span>{this.getHint(this.props.correctAnswer)}</span>
             <ul>
-              <li value={this.props.answer1} onClick={this.handleClick}>{this.props.answer1}</li>
-              <li value={this.props.answer2} onClick={this.handleClick}>{this.props.answer2}</li>
-              <li value={this.props.answer3} onClick={this.handleClick}>{this.props.answer3}</li>
-            </ul>
+              <li ><button value={this.props.answer1}onClick={this.handleClick} autoFocus={true}>{this.props.answer1}</button></li>
+              <li ><button value={this.props.answer2} onClick={this.handleClick}>{this.props.answer2}</button></li>
+              <li ><button value={this.props.answer3} onClick={this.handleClick}>{this.props.answer3}</button></li>
+              </ul>
+            
             <ShowCorrectAnswer correctAnswer={this.props.correctAnswer} answerBoolean={this.props.answerBoolean}/>
             </div>
         )
