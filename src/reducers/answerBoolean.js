@@ -7,10 +7,10 @@ const answerBoolean = ( state=null, action) => {
     case 'INCORRECT_ANSWER':
       return {
         state: action.payload
-      }  
-      default: 
+      }
+      default:
           return state
   }
 }
-  
+
 export default answerBoolean

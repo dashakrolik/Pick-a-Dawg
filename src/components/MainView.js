@@ -20,8 +20,11 @@ class MainView extends React.Component {
         this.props.dispatch({
           type:'INCORRECT_ANSWER',
           payload: false
-       }
-      )  
+       })
+
+       this.props.dispatch({
+         type:'SHOW_CORRECT_ANSWER'
+      })
 		} }
 
 	render(){
@@ -37,7 +40,7 @@ class MainView extends React.Component {
               <li value={this.props.answer2} onClick={this.handleClick}>{this.props.answer2}</li>
               <li value={this.props.answer3} onClick={this.handleClick}>{this.props.answer3}</li>
             </ul>
-            <ShowCorrectAnswer correctAnswer={this.props.correctAnswer}/>
+            <ShowCorrectAnswer correctAnswer={this.props.correctAnswer} answerBoolean={this.props.answerBoolean}/>
             </div>
         )
     }
@@ -46,7 +49,8 @@ class MainView extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        state
+        state,
+        answerBoolean: state.answerBoolean
     }
 }
 
