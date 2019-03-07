@@ -40,7 +40,6 @@ class MainView extends React.Component {
 		} }
 
 	render(){
-    console.log(this.props.hello, 'is this something?')
     if(this.props.correctAnswer === undefined) return <h1>Loading</h1>
     return(
       <div className='mainView'>
@@ -62,7 +61,6 @@ class MainView extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state, 'state now')
     return {
         state,
 

@@ -20,6 +20,7 @@ function shuffle(array) {
 class DisplayImage extends Component {
   state = {
     image: null,
+    image1: null,
     answerArray: []
   }
 
@@ -32,19 +33,22 @@ class DisplayImage extends Component {
     const shuffledArray = shuffle(this.props.breeds)
     const answerArray = [shuffledArray[0], shuffledArray[1], shuffledArray[2]]
     const shuffleAnswers = shuffle(answerArray)
+    console.log(shuffledArray)
 
     this.setState({
       answerArray: shuffleAnswers,
-      correctAnswer: shuffledArray[0]
-  
+      correctAnswer: shuffledArray[0],
+      secondShuffledString: shuffledArray[1]
+
     },
-    () => {this.getImage(shuffledArray[0])}
+    () => {this.getImage(shuffledArray[0])},
+    () => {this.getThreeImages(shuffledArray[1])}
     )
 
     this.props.dispatch({ type: 'SHOW_NOTHING' })
   }
 
-getImage = (correctAnswer) => {
+  getImage = (correctAnswer) => {
     request
       .get(`https://dog.ceo/api/breed/${correctAnswer}/images/random`)
       .then(response => JSON.parse(response.text).message)
@@ -54,19 +58,35 @@ getImage = (correctAnswer) => {
       .catch(console.err)
   }
 
+  getThreeImages = (secondShuffledString) => {
+    request
+      .get(`https://dog.ceo/api/breed/${secondShuffledString}/images/random`)
+      .then(response => JSON.parse(response.text).message)
+      .then(res => this.setState({
+        image1:res
+      }))
+      .catch(console.err)
+  }
+
   render() {
+    console.log(this.state.image1)
+    console.log(this.state.image)
+    console.log(this.state.answerArray[0])
+    console.log(this.state.answerArray[1])
     const { breeds } = this.props
     if (breeds) {
       return (
         <div>
           <MainView
             correctAnswer={this.state.correctAnswer}
+            secondShuffledString={this.state.secondShuffledString}
             image={this.state.image}
+            image1={this.state.image1}
 
             answer1={this.state.answerArray[0]}
             answer2={this.state.answerArray[1]}
             answer3={this.state.answerArray[2]}
-        
+
 
             nextQuestion={() => this.nextQuestion()}
             />
@@ -82,7 +102,7 @@ getImage = (correctAnswer) => {
 const mapStateToProps = (state) => {
   return {
     breeds: state.levelUpReducer,
-    image: state.DisplayContentReducer
+    image: state.DisplayContentReducer,
   }
 }
 
