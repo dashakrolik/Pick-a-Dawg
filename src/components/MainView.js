@@ -5,6 +5,7 @@ import ShowCorrectAnswer from '../actions/ShowCorrectAnswer'
 import { levelUpGetBreeds } from '../actions/levelUpAction'
 
 
+
 class MainView extends React.Component {
 
   getHint = (answerString)=> {
@@ -71,14 +72,11 @@ class MainView extends React.Component {
           </div>
             <span>Breed Name</span>
             <span>{this.getHint(this.props.correctAnswer)}</span>
-            {/* <div>key detected: {this.props.eventKey}</div> */}
-            {/* <KeyboardEventHandler handleKeys={['up', 'down', 'enter/return']} onKeyEvent={(key, e) => console.log(`do something upon keydown event of ${key}`)}> */}
             <ul>
-              <li value={this.props.answer1} onClick={this.handleClick}><button autoFocus={true}>{this.props.answer1}</button></li>
-              <li value={this.props.answer2} onClick={this.handleClick}><button>{this.props.answer2}</button></li>
-              <li value={this.props.answer3} onClick={this.handleClick}><button>{this.props.answer3}</button></li>
+              <li ><button value={this.props.answer1}onClick={this.handleClick} autoFocus={true}>{this.props.answer1}</button></li>
+              <li ><button value={this.props.answer2} onClick={this.handleClick}>{this.props.answer2}</button></li>
+              <li ><button value={this.props.answer3} onClick={this.handleClick}>{this.props.answer3}</button></li>
               </ul>
-            {/* </KeyboardEventHandler> */}
             
             <ShowCorrectAnswer correctAnswer={this.props.correctAnswer} answerBoolean={this.props.answerBoolean}/>
             </div>
