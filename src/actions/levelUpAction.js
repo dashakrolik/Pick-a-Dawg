@@ -2,6 +2,7 @@ import request from 'superagent'
 export const LEVEL_UP = 'LEVEL_UP'
 
 export function levelUpSetBreeds(breeds) {
+	console.log('im levelUpSetBreeds in levelUpAction')
 	return {
 		type: LEVEL_UP,
 		payload: breeds
@@ -9,6 +10,7 @@ export function levelUpSetBreeds(breeds) {
 }
 
 export function levelUpGetBreeds() {
+	console.log('im levelUpGetBreeds in levelUpAction')
 	return function (dispatch) {
 		request
 			.get('https://dog.ceo/api/breeds/list/all')

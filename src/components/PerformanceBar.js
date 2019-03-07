@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import {levelUpSetBreeds, levelUpGetBreeds} from '../actions/levelUpAction'
 
 class PerformanceBar extends Component {
+
   render () {
-    const perc = (this.props.performanceBar.correct/this.props.performanceBar.total) * 100
     
+    const perc = (this.props.performanceBar.correct/this.props.performanceBar.total) * 100
+
     return (
       <div className="timer">
         <div>You are at level {this.props.performanceBar.level} (every 10 correct, 1 level up)</div>
@@ -22,4 +25,5 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps)(PerformanceBar)
+export default connect(mapStateToProps, { levelUpGetBreeds, levelUpSetBreeds })(PerformanceBar)
+

@@ -1,6 +1,8 @@
 import * as React from 'react'
 import {connect} from 'react-redux'
 import ShowCorrectAnswer from '../actions/ShowCorrectAnswer'
+import { LEVEL_UP } from '../actions/levelUpAction'
+import {levelUpGetBreeds, levelUpSetBreeds} from '../actions/levelUpAction'
 
 class MainView extends React.Component {
 
@@ -10,13 +12,21 @@ class MainView extends React.Component {
 
   const elValue = event.target.getAttribute('value')
   const correctAnswer = this.props.correctAnswer
+  
+  console.log(this.props, 'props MV.js')
 
-  if(correctAnswer === elValue){
+    if(correctAnswer === elValue){
     this.props.dispatch({
       type:'CORRECT_ANSWER',
       payload: true
+    })
+    // console.log(this.props, 'im props before levelupcalled')
+    if(this.props.correct === 2){
+      // console.log('levelupgetbreeds is called')
+      levelUpGetBreeds()
     }
-    )} else {
+
+    } else {
         this.props.dispatch({
           type:'INCORRECT_ANSWER',
           payload: false
@@ -45,9 +55,11 @@ class MainView extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state, 'state')
     return {
-        state
+        correct: state.performanceBar.correct
     }
 }
 
 export default connect(mapStateToProps)(MainView)
+
