@@ -5,7 +5,9 @@ import performanceBar from './performanceBarReducer'
 // import reducer from './reducer'
 import levelUpReducer from './levelUpReducer'
 import answerBoolean from './answerBoolean'
-import showCorrectAnswer from './ShowCorrectAnswerReducer'
+
+import ShowCorrectAnswerReducer from './ShowCorrectAnswerReducer'
+import shownBreeds from './shownBreeds'
 
 export default combineReducers({
     // reducer,
@@ -13,5 +15,8 @@ export default combineReducers({
     answerBoolean,
     DisplayContentReducer,
     performanceBar,
-    showCorrectAnswer
+
+    ShowCorrectAnswerReducer,
+    shownBreeds
+
 })
