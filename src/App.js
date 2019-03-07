@@ -13,7 +13,6 @@ class App extends Component {
       <div className="App">
         <DisplayImage />
         <PerformanceBar />
-        <button onClick={()=> this.props.levelUpGetBreeds()} >KLIK HERE</button>
       </div>
     );
   }
