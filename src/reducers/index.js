@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import DisplayContentReducer from './DisplayContentReducer'
+import performanceBar from './performanceBarReducer'
 // import reducer from './reducers'
 // import reducer from './reducer'
 import levelUpReducer from './levelUpReducer'
@@ -11,5 +12,6 @@ export default combineReducers({
     levelUpReducer,
     answerBoolean,
     DisplayContentReducer,
+    performanceBar,
     ShowCorrectAnswerReducer
 })

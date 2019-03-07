@@ -5,7 +5,7 @@ import ShowCorrectAnswer from '../actions/ShowCorrectAnswer'
 class MainView extends React.Component {
 
  handleClick = (event) => {
-
+  // One single event triggers multiple dispatches on Redux store. In this case Tonia's answerBoolean and Duc's performance bar are both updated. REMEMBER: type's name should be identical!!!
   setTimeout(this.props.nextQuestion, 2000)
 
   const elValue = event.target.getAttribute('value')
@@ -21,11 +21,10 @@ class MainView extends React.Component {
           type:'INCORRECT_ANSWER',
           payload: false
        }
-      )
+      )  
 		} }
 
 	render(){
-    console.log(this.props,'im the props in MainView')
     return(
       <div className='mainView'>
         <div className='breedImage'>
@@ -33,7 +32,6 @@ class MainView extends React.Component {
           </div>
             <span>Breed Name</span>
             <span>Hint</span>
-
             <ul>
               <li value={this.props.answer1} onClick={this.handleClick}>{this.props.answer1}</li>
               <li value={this.props.answer2} onClick={this.handleClick}>{this.props.answer2}</li>
@@ -47,8 +45,6 @@ class MainView extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state, 'im state of MainView');
-
     return {
         state
     }
