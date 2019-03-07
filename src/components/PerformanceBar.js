@@ -19,10 +19,7 @@ class PerformanceBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    answerBoolean: state.answerBoolean || {state: null},
-    performanceBar: state.performanceBar
-  }
+  return state
 }
 
 export default connect(mapStateToProps)(PerformanceBar)

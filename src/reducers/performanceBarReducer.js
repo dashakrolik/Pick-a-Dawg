@@ -1,4 +1,4 @@
-export default (state = {correct: 0, total: 0, level: 1}, action = {}) => {
+export default (state = {correct: 0, total: 0, level: 0, streak: 0}, action = {}) => {
 
     switch(action.type){
 	    case 'CORRECT_ANSWER':
@@ -6,13 +6,15 @@ export default (state = {correct: 0, total: 0, level: 1}, action = {}) => {
                 ...state,
                 correct: state.correct + 1,
                 total: state.total + 1,
-                level: Math.floor((state.correct + 1)/10) + 1
+                level: Math.floor((state.correct + 1)/10),
+                streak: state.streak + 1
             }
             
         case 'INCORRECT_ANSWER':
             return {
                 ...state,
-                total: state.total + 1
+                total: state.total + 1,
+                streak: 0
             }
             
 	    default:
