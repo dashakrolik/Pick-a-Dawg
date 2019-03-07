@@ -1,6 +1,7 @@
 import * as React from 'react'
 import {connect} from 'react-redux'
 import ShowCorrectAnswer from '../actions/ShowCorrectAnswer'
+import { levelUpGetBreeds } from '../actions/levelUpAction'
 
 class MainView extends React.Component {
 
@@ -24,11 +25,26 @@ class MainView extends React.Component {
   })
 
   if(correctAnswer === elValue){
+
     this.props.dispatch({
       type:'CORRECT_ANSWER',
       payload: true
-    }
-    )} else {
+   })
+
+   if(this.props.streak !==0 && Number.isInteger(this.props.streak/2)){
+    this.props.dispatch(levelUpGetBreeds())
+  }
+
+   if(this.props.streak === 3){
+    this.props.dispatch({
+      type:'RESET_STREAK',
+      payload: 0
+    })
+  }
+    // console.log(Number.isInteger(this.props.streak !==0 && Number.isInteger(this.props.streak/2)))
+  
+    } else {
+
         this.props.dispatch({
           type:'INCORRECT_ANSWER',
           payload: false
@@ -40,7 +56,6 @@ class MainView extends React.Component {
 		} }
 
 	render(){
-    console.log(this.props.hello, 'is this something?')
     if(this.props.correctAnswer === undefined) return <h1>Loading</h1>
     return(
       <div className='mainView'>
@@ -65,7 +80,7 @@ const mapStateToProps = (state) => {
   console.log(state, 'state now')
     return {
         state,
-
+        streak: state.performanceBar.streak,
         shownBreedList: state.shownBreeds,
         answerBoolean: state.answerBoolean
 

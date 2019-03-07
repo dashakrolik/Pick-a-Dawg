@@ -1,7 +1,8 @@
 import request from 'superagent'
 export const LEVEL_UP = 'LEVEL_UP'
 
-export function levelUpSetBreeds(breeds) {
+export const levelUpSetBreeds = (breeds) => {
+	console.log('levelUp is called')
 	return {
 		type: LEVEL_UP,
 		payload: breeds
@@ -23,13 +24,10 @@ export function levelUpGetBreeds() {
 					Object.keys(res)[randomNumber3]
 				])
 			})
-			.then(res => {
-				dispatch(levelUpSetBreeds(res))
-			})
+			.then(res => dispatch(levelUpSetBreeds(res)))
 
 	}
 }
-
 
 
 
