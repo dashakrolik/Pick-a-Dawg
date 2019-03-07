@@ -3,9 +3,24 @@ import request from 'superagent'
 import { connect } from 'react-redux'
 import MainView from '../components/MainView'
 
+// shuffle array function
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
 class DisplayImage extends Component {
   state = { 
     image: null,
+    answerArray: []
   }
 
   componentDidMount() {
@@ -13,33 +28,21 @@ class DisplayImage extends Component {
   }
 
   nextQuestion() {
-    console.log(this.props.breeds,'im breeds in nextQuestion')
-    console.log('nextQuestion is called')
-    
-    let lengthBreedsArray = this.props.breeds.length
-    const randomNumber1 = Math.floor(Math.random()*lengthBreedsArray)
-    const randomNumber2 = Math.floor(Math.random()*lengthBreedsArray)
-    const randomNumber3 = Math.floor(Math.random()*lengthBreedsArray)
-
-    const randomBreed1 =  this.props.breeds[randomNumber1]
-    // randomBreed1 is the CORRECT ANSWER
-    const randomBreed2 =  this.props.breeds[randomNumber2]
-    const randomBreed3 =  this.props.breeds[randomNumber3]
+    const shuffledArray = shuffle(this.props.breeds)
+    const answerArray = [shuffledArray[0], shuffledArray[1], shuffledArray[2]]
+    const shuffleAnswers = shuffle(answerArray)
     this.setState({
-      randomNumber1,
-      randomNumber2,
-      randomNumber3,
-      randomBreed1,
-      randomBreed2,
-      randomBreed3,
+      answerArray: shuffleAnswers,
+      correctAnswer: shuffledArray[0]
+  
     },
-    () => {this.getImage()}
+    () => {this.getImage(shuffledArray[0])}
     )
   }
 
-getImage = () => {
+getImage = (correctAnswer) => {
     request
-      .get(`https://dog.ceo/api/breed/${this.state.randomBreed1}/images/random`)
+      .get(`https://dog.ceo/api/breed/${correctAnswer}/images/random`)
       .then(response => JSON.parse(response.text).message)
       .then(res => this.setState({
         image:res
@@ -53,11 +56,11 @@ getImage = () => {
       return (
         <div>
           <MainView
-            correctAnswer={this.state.randomBreed1}
+            correctAnswer={this.state.correctAnswer}
             image={this.state.image}
-            answer1={breeds[this.state.randomNumber1]}
-            answer2={breeds[this.state.randomNumber2]}
-            answer3={breeds[this.state.randomNumber3]}
+            answer1={this.state.answerArray[0]}
+            answer2={this.state.answerArray[1]}
+            answer3={this.state.answerArray[2]}
         
             nextQuestion={() => this.nextQuestion()}
             />
@@ -78,3 +81,4 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(DisplayImage)
+
