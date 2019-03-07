@@ -1,7 +1,10 @@
 const ShowCorrectAnswerReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case 'SHOW_CORRECT_ANSWER':
-    return action.payload
+    return true
+
+    case 'SHOW_NOTHING':
+    return false
 
   default:
     return state
@@ -9,4 +12,4 @@ const ShowCorrectAnswerReducer = (state = initialState, action = {}) => {
 }
 export default ShowCorrectAnswerReducer
 
-const initialState = []
+const initialState = false

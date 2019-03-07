@@ -18,7 +18,7 @@ function shuffle(array) {
 }
 
 class DisplayImage extends Component {
-  state = { 
+  state = {
     image: null,
     answerArray: []
   }
@@ -28,9 +28,11 @@ class DisplayImage extends Component {
   }
 
   nextQuestion() {
+
     const shuffledArray = shuffle(this.props.breeds)
     const answerArray = [shuffledArray[0], shuffledArray[1], shuffledArray[2]]
     const shuffleAnswers = shuffle(answerArray)
+
     this.setState({
       answerArray: shuffleAnswers,
       correctAnswer: shuffledArray[0]
@@ -38,6 +40,8 @@ class DisplayImage extends Component {
     },
     () => {this.getImage(shuffledArray[0])}
     )
+
+    this.props.dispatch({ type: 'SHOW_NOTHING' })
   }
 
 getImage = (correctAnswer) => {
@@ -48,8 +52,8 @@ getImage = (correctAnswer) => {
         image:res
       }))
       .catch(console.err)
-  } 
-  
+  }
+
   render() {
     const { breeds } = this.props
     if (breeds) {
@@ -58,10 +62,12 @@ getImage = (correctAnswer) => {
           <MainView
             correctAnswer={this.state.correctAnswer}
             image={this.state.image}
+
             answer1={this.state.answerArray[0]}
             answer2={this.state.answerArray[1]}
             answer3={this.state.answerArray[2]}
         
+
             nextQuestion={() => this.nextQuestion()}
             />
           </div>
@@ -81,4 +87,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(DisplayImage)
-
