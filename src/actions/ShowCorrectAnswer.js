@@ -27,8 +27,6 @@ class ShowCorrectAnswer extends Component {
   }
 
   render() {
-    console.log(this.props.answer)
-    console.log(this.state)
     if (this.props.answer) {
       return (<div><p>{this.props.correctAnswer}</p></div>)
     }
