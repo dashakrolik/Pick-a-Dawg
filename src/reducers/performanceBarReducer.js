@@ -6,10 +6,19 @@ export default (state = {correct: 0, total: 0, level: 0, streak: 0}, action = {}
                 ...state,
                 correct: state.correct + 1,
                 total: state.total + 1,
-                level: Math.floor((state.correct + 1)/10),
-                streak: state.streak + 1
+                streak: state.streak + 1,
+                // level: state.level + Math.floor((state.streak + 1)/9)
             }
-            
+        case 'RESET_STREAK':
+            return {
+                ...state,
+                streak: action.payload
+            }    
+        case 'LEVEL_COUNT':
+            return {
+                ...state,
+                level: state.level +1
+            } 
         case 'INCORRECT_ANSWER':
             return {
                 ...state,

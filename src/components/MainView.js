@@ -1,6 +1,7 @@
 import * as React from 'react'
 import {connect} from 'react-redux'
 import ShowCorrectAnswer from '../actions/ShowCorrectAnswer'
+import { levelUpGetBreeds } from '../actions/levelUpAction'
 
 class MainView extends React.Component {
 
@@ -11,8 +12,9 @@ class MainView extends React.Component {
   }
 
 
+
+
  handleClick = (event) => {
-  // One single event triggers multiple dispatches on Redux store. In this case Tonia's answerBoolean and Duc's performance bar are both updated. REMEMBER: type's name should be identical!!!
   setTimeout(this.props.nextQuestion, 2000)
 
   const elValue = event.target.getAttribute('value')
@@ -24,11 +26,31 @@ class MainView extends React.Component {
   })
 
   if(correctAnswer === elValue){
+  
     this.props.dispatch({
       type:'CORRECT_ANSWER',
       payload: true
-    }
-    )} else {
+   })
+
+   if(this.props.streak !==0 && Number.isInteger(this.props.streak/9)){
+     // the number can be adjest on when level up (do the amount of clicks minus 1)
+    this.props.dispatch(levelUpGetBreeds())
+      
+    this.props.dispatch({
+      type:'LEVEL_COUNT',
+      payload: 1
+    })
+
+    this.props.dispatch({
+      type:'RESET_STREAK',
+      payload: 0
+    })
+
+
+  }
+  
+    } else {
+
         this.props.dispatch({
           type:'INCORRECT_ANSWER',
           payload: false
@@ -40,7 +62,6 @@ class MainView extends React.Component {
 		} }
 
 	render(){
-    console.log(this.props.hello, 'is this something?')
     if(this.props.correctAnswer === undefined) return <h1>Loading</h1>
     return(
       <div className='mainView'>
@@ -65,7 +86,7 @@ const mapStateToProps = (state) => {
   console.log(state, 'state now')
     return {
         state,
-
+        streak: state.performanceBar.streak,
         shownBreedList: state.shownBreeds,
         answerBoolean: state.answerBoolean
 
