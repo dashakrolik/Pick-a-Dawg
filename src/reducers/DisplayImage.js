@@ -9,11 +9,13 @@ class DisplayImage extends Component {
   }
 
   componentDidMount() {
-    this.createRandomNumbers()
+    this.nextQuestion()
   }
 
-  createRandomNumbers() {
-    console.log(this.props.breeds.length,'im the props.breeds.length in createRandomNumbers')
+  nextQuestion() {
+    console.log(this.props.breeds,'im breeds in nextQuestion')
+    console.log('nextQuestion is called')
+    
     let lengthBreedsArray = this.props.breeds.length
     const randomNumber1 = Math.floor(Math.random()*lengthBreedsArray)
     const randomNumber2 = Math.floor(Math.random()*lengthBreedsArray)
@@ -31,11 +33,11 @@ class DisplayImage extends Component {
       randomBreed2,
       randomBreed3,
     },
-    () => {this.setAnswer()}
+    () => {this.getImage()}
     )
   }
 
-setAnswer = () => {
+getImage = () => {
     request
       .get(`https://dog.ceo/api/breed/${this.state.randomBreed1}/images/random`)
       .then(response => JSON.parse(response.text).message)
@@ -43,12 +45,10 @@ setAnswer = () => {
         image:res
       }))
       .catch(console.err)
-      
   } 
   
   render() {
     const { breeds } = this.props
-    
     if (breeds) {
       return (
         <div>
@@ -58,6 +58,8 @@ setAnswer = () => {
             answer1={breeds[this.state.randomNumber1]}
             answer2={breeds[this.state.randomNumber2]}
             answer3={breeds[this.state.randomNumber3]}
+        
+            nextQuestion={() => this.nextQuestion()}
             />
           </div>
       )
@@ -76,4 +78,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(DisplayImage)
-
