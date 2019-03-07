@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {levelUpSetBreeds, levelUpGetBreeds} from './actions/levelUpAction'
-// import DisplayImage from './DisplayImage'
 import { connect } from 'react-redux'
 import MainView from './components/MainView'
 import DisplayImage from './reducers/DisplayImage'
