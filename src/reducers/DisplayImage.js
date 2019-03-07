@@ -100,9 +100,9 @@ getThreeImages = (answerArray) => {
             answer2={this.state.answerArray[1]}
             answer3={this.state.answerArray[2]}
         
-            image1={}
-            image2={}
-            image3={}
+            image1={this.state.image1}
+            image2={this.state.image2}
+            image3={this.state.image3}
 
             nextQuestion={() => this.nextQuestion()}
             />
