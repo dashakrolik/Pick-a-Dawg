@@ -7,7 +7,7 @@ import { levelUpGetBreeds } from '../actions/levelUpAction'
 
 
 class MainView extends React.Component {
-  
+
   getHint = (answerString)=> {
     if(this.props.shownBreedList.includes(answerString)) return
 
@@ -28,7 +28,7 @@ class MainView extends React.Component {
   })
 
   if(correctAnswer === elValue){
-  
+
     this.props.dispatch({
       type:'CORRECT_ANSWER',
       payload: true
@@ -37,7 +37,7 @@ class MainView extends React.Component {
    if(this.props.streak !==0 && Number.isInteger(this.props.streak/9)){
      // the number can be adjest on when level up (do the amount of clicks minus 1)
     this.props.dispatch(levelUpGetBreeds())
-      
+
     this.props.dispatch({
       type:'LEVEL_COUNT',
       payload: 1
@@ -50,7 +50,7 @@ class MainView extends React.Component {
 
 
   }
-  
+
     } else {
 
         this.props.dispatch({
@@ -62,52 +62,40 @@ class MainView extends React.Component {
          type:'SHOW_CORRECT_ANSWER'
       })
 		} }
-    
+
 	render(){
-    console.log(this.props, 'props')
 
     if(this.props.correctAnswer === undefined) {
       return <h1>Loading</h1>
-    } else if (Math.random() > 0.9) {
+    } else  {
     return(
-      
+
       <div className='mainView'>
         <div className='breedImage'>
           <img src={this.props.image} alt=''/>
           </div>
-            <div>WHAT BREED AM I?</div>
-            <span>{this.getHint(this.props.correctAnswer)}</span>
-            <ul>
+          <br></br>
+          <br></br>
+            <div className='breedOneQuestion'>What breed am I?</div>
+            <br></br>
+            <br></br>
+            <br></br>
+            <span className='hint'>{this.getHint(this.props.correctAnswer)}</span>
+            <ul className='mainButtons'>
               <li ><button value={this.props.answer1}onClick={this.handleClick} autoFocus={true}>{this.props.answer1}</button></li>
               <li ><button value={this.props.answer2} onClick={this.handleClick}>{this.props.answer2}</button></li>
               <li ><button value={this.props.answer3} onClick={this.handleClick}>{this.props.answer3}</button></li>
               </ul>
-            
+
             <ShowCorrectAnswer correctAnswer={this.props.correctAnswer} answerBoolean={this.props.answerBoolean}/>
             </div>
         )
-    } 
-    else {
-    return (
-      <div className='mainView'>
-        <div className='breedImage'>
-          <img value={this.props.answer1} src={this.props.image1} onClick={this.handleClick} alt=''/>
-          <img value={this.props.answer1} src={this.props.image2} onClick={this.handleClick} alt=''/>
-          <img value={this.props.answer1} src={this.props.image3} onClick={this.handleClick} alt=''/>
-          <ul>
-            <li> Find a {this.props.correctAnswer} in one of these images </li>
-          </ul>
-            
-          <ShowCorrectAnswer correctAnswer={this.props.correctAnswer} answerBoolean={this.props.answerBoolean}/>
-        </div>
-      </div>
-    )
     }
+
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state, 'state')
     return {
         state,
         streak: state.performanceBar.streak,
