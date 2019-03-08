@@ -1,28 +1,76 @@
 
 body {
-  padding: 20px;
-}
-
-.timer {
+  /* display: ; */
+  justify-content: center;
+  background-color: white;
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
+  flex-direction: column
+
 }
 
-.progress-bar {
-  width: 200px;
-  height: 30px;
-  background: #999;
+button {
+  cursor: pointer;
+  color: #fff !important;
+  text-transform: uppercase;
+  background: #60a3bc;
+  padding: 30px;
+  border-radius: 50px;
+  display: inline-block;
+  border: none;
+  font-size: 1.5em;
+  width: 300px;
+  margin-left: 50px
 
-  position: relative;
 }
 
-.progress {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 60%;
+li {
+  margin: 20px
+}
 
-  background: red;
+img {
+  display: inline-block;
+  border-radius: 50%;
+  justify-content: center;
+  max-width: 400px;
+  max-height: 400px
+}
+
+
+.breedOneQuestion {
+  justify-content: center;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  font-size: 2em;
+  margin-left: 120px
+}
+
+.showAnswer {
+  font-size: 2em;
+}
+
+.hint {
+  font-size: 1.5em;
+  margin-left: 90px
+}
+
+.mainButtons {
+  color: white
+}
+
+.threeImagesContainer {
+  display: flex;
+  flex-direction: row;
+  color: white
+}
+
+.whichImage {
+  font-size: 2em;
+  background: #60a3bc;
+  padding: 20px;
+  font-family: Arial;
+  color: white;
+  width:400px;
+  text-align: center;
+  justify-content: center
 }

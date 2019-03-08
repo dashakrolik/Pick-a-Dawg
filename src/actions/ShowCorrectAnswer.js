@@ -28,7 +28,7 @@ class ShowCorrectAnswer extends Component {
 
   render() {
     if (this.props.answer) {
-      return (<div><p>{this.props.correctAnswer}</p></div>)
+      return (<div className='showAnswer'>WRONG! GET YOUR SHIT TOGETHER, I AM A: <p>{this.props.correctAnswer}</p></div>)
     }
     return null
   }
