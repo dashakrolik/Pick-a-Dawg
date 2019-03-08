@@ -11,8 +11,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <DisplayImage />
-        <PerformanceBar />
+        <div className='performance-bar'>
+          <PerformanceBar />
+        </div>
+          <DisplayImage />
       </div>
     );
   }

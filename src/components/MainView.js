@@ -11,7 +11,7 @@ class MainView extends React.Component {
   getHint = (answerString)=> {
     if(this.props.shownBreedList.includes(answerString)) return
 
-    return `Hint: The name starts with: ${answerString[0]}`
+    return `HINT: The name starts with: ${answerString[0]}`
   }
 
 
@@ -70,7 +70,7 @@ class MainView extends React.Component {
         <div className='breedImage'>
           <img src={this.props.image} alt=''/>
           </div>
-            <span>Breed Name</span>
+            <div>WHAT BREED AM I?</div>
             <span>{this.getHint(this.props.correctAnswer)}</span>
             <ul>
               <li ><button value={this.props.answer1}onClick={this.handleClick} autoFocus={true}>{this.props.answer1}</button></li>
