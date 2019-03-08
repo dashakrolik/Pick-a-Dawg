@@ -99,21 +99,6 @@ getThreeImages = (answerArray) => {
     if (breeds) {
       if(this.props.level % 2 === 0){
         return <div>
-          
-          <MainView
-            correctAnswer={this.state.correctAnswer}
-            image={this.state.image}
-
-            answer1={this.state.answerArray[0]}
-            answer2={this.state.answerArray[1]}
-            answer3={this.state.answerArray[2]}
-           nextQuestion={() => this.nextQuestion()}
-            />
-            </div>
-      } else {
-        return (
-        <div>
-        
           <ThreeImages
             correctAnswer={this.state.correctAnswer}
 
@@ -125,6 +110,22 @@ getThreeImages = (answerArray) => {
             image3_breed={this.state.image3_breed}
             nextQuestion={() => this.nextQuestion()}
           />
+          
+
+            </div>
+      } else {
+        return (
+        <div>
+        
+        <MainView
+            correctAnswer={this.state.correctAnswer}
+            image={this.state.image}
+
+            answer1={this.state.answerArray[0]}
+            answer2={this.state.answerArray[1]}
+            answer3={this.state.answerArray[2]}
+           nextQuestion={() => this.nextQuestion()}
+            />
 
           </div>
         )
@@ -137,6 +138,7 @@ getThreeImages = (answerArray) => {
     }
   }
 
+  
 const mapStateToProps = (state) => {
   console.log(state,' im the state iin displayimage')
   return {

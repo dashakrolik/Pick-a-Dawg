@@ -19,7 +19,7 @@ class ThreeImages extends React.Component {
 				payload: true
 		 })
 
-		 if(this.props.streak !==0 && Number.isInteger(this.props.streak/5)){
+		 if(this.props.streak !==0 && Number.isInteger(this.props.streak/4)){
 			// the number can be adjest on when level up (do the amount of clicks minus 1)
 			console.log('i should be shown when streak is 5')
 		 this.props.dispatch(levelUpGetBreeds())
