@@ -26,3 +26,7 @@ body {
 
   background: red;
 }
+
+.img {
+  display: flex;
+}
