@@ -3,3 +3,11 @@ body {
   /* display: ; */
   justify-content: center
 }
+
+button {
+  cursor: pointer;
+}
+
+li {
+  margin: 20px
+}
