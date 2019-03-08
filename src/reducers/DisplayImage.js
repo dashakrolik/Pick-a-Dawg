@@ -38,7 +38,11 @@ class DisplayImage extends Component {
       correctAnswer: shuffledArray[0]
   
     },
-    () => {this.getImage(shuffledArray[0])}
+    
+    () => {
+      this.getThreeImages(answerArray)
+      this.getImage(shuffledArray[0])
+    }
     )
 
     this.props.dispatch({ type: 'SHOW_NOTHING' })
@@ -50,7 +54,36 @@ getImage = (correctAnswer) => {
       .then(response => JSON.parse(response.text).message)
       .then(res => this.setState({
         image:res
+      }))  
+      .catch(console.err)
+  }
+
+getThreeImages = (answerArray) => {
+    request
+      .get(`https://dog.ceo/api/breed/${answerArray[0]}/images/random`)
+      .then(response => JSON.parse(response.text).message)
+      // .then(res => console.log(res,'im the first image'))
+      .then(res => this.setState({
+        image1:res
       }))
+      .then(
+        request
+        .get(`https://dog.ceo/api/breed/${this.state.answerArray[1]}/images/random`)
+        .then(response => JSON.parse(response.text).message)
+        // .then(res => console.log(res,'im the second image'))
+        .then(res => this.setState({
+          image2:res
+        }))
+      )
+      .then(
+        request
+        .get(`https://dog.ceo/api/breed/${this.state.answerArray[2]}/images/random`)
+        .then(response => JSON.parse(response.text).message)
+        // .then(res => console.log(res,'im the third image'))
+        .then(res => this.setState({
+          image3:res
+        }))
+      )
       .catch(console.err)
   }
 
@@ -67,10 +100,13 @@ getImage = (correctAnswer) => {
             answer2={this.state.answerArray[1]}
             answer3={this.state.answerArray[2]}
         
+            image1={this.state.image1}
+            image2={this.state.image2}
+            image3={this.state.image3}
 
             nextQuestion={() => this.nextQuestion()}
             />
-          </div>
+          </div>   
       )
     }
     return (
