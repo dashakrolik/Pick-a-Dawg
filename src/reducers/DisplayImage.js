@@ -62,7 +62,7 @@ getThreeImages = (answerArray) => {
     request
       .get(`https://dog.ceo/api/breed/${answerArray[0]}/images/random`)
       .then(response => JSON.parse(response.text).message)
-      .then(res => console.log(res,'im the first image'))
+      // .then(res => console.log(res,'im the first image'))
       .then(res => this.setState({
         image1:res
       }))
@@ -70,7 +70,7 @@ getThreeImages = (answerArray) => {
         request
         .get(`https://dog.ceo/api/breed/${this.state.answerArray[1]}/images/random`)
         .then(response => JSON.parse(response.text).message)
-        .then(res => console.log(res,'im the second image'))
+        // .then(res => console.log(res,'im the second image'))
         .then(res => this.setState({
           image2:res
         }))
@@ -79,7 +79,7 @@ getThreeImages = (answerArray) => {
         request
         .get(`https://dog.ceo/api/breed/${this.state.answerArray[2]}/images/random`)
         .then(response => JSON.parse(response.text).message)
-        .then(res => console.log(res,'im the third image'))
+        // .then(res => console.log(res,'im the third image'))
         .then(res => this.setState({
           image3:res
         }))
@@ -106,7 +106,7 @@ getThreeImages = (answerArray) => {
 
             nextQuestion={() => this.nextQuestion()}
             />
-          </div>
+          </div>   
       )
     }
     return (
