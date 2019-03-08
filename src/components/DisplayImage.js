@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import request from 'superagent'
 import { connect } from 'react-redux'
-import MainView from '../components/MainView'
+import MainView from './MainView'
 
 // shuffle array function
 function shuffle(array) {

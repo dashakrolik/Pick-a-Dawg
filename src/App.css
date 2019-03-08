@@ -11,3 +11,7 @@ button {
 li {
   margin: 20px
 }
+
+img {
+  max-width: 30%;
+}

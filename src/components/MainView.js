@@ -34,7 +34,7 @@ class MainView extends React.Component {
       payload: true
    })
 
-   if(this.props.streak !==0 && Number.isInteger(this.props.streak/9)){
+   if(this.props.streak !==0 && Number.isInteger(this.props.streak/4)){
      // the number can be adjest on when level up (do the amount of clicks minus 1)
     this.props.dispatch(levelUpGetBreeds())
       
@@ -79,6 +79,8 @@ class MainView extends React.Component {
               </ul>
             
             <ShowCorrectAnswer correctAnswer={this.props.correctAnswer} answerBoolean={this.props.answerBoolean}/>
+            <p>Get a streak of 5 to get to the next level with more dog breeds!</p>
+            <p>Use TAB to navigate through the answer (+the rest of the browser) and select with ENTER</p>
             </div>
         )
     }
