@@ -39,7 +39,7 @@ class MainView extends React.Component {
 
 
   if(correctAnswer === elValue){
-  
+
     this.props.dispatch({
       type:'CORRECT_ANSWER',
       payload: true
@@ -48,7 +48,7 @@ class MainView extends React.Component {
    if(this.props.streak !==0 && Number.isInteger(this.props.streak/5)){
      // the number can be adjest on when level up (do the amount of clicks minus 1)
     this.props.dispatch(levelUpGetBreeds())
-      
+
     this.props.dispatch({
       type:'LEVEL_COUNT',
       payload: 1
@@ -61,7 +61,7 @@ class MainView extends React.Component {
 
 
   }
-  
+
     } else {
 
         this.props.dispatch({
@@ -81,9 +81,14 @@ class MainView extends React.Component {
         <div className='breedImage'>
           <img src={this.props.image} alt=''/>
           </div>
-            <div>WHAT BREED AM I?</div>
-            <span>{this.getHint(this.props.correctAnswer)}</span>
-            <ul>
+          <br></br>
+          <br></br>
+            <div className='breedOneQuestion'>What breed am I?</div>
+            <br></br>
+            <br></br>
+            <br></br>
+            <span className='hint'>{this.getHint(this.props.correctAnswer)}</span>
+            <ul className='mainButtons'>
               <li ><button value={this.props.answer1}onClick={this.handleClick} autoFocus={true}>{this.props.answer1}</button></li>
               <li ><button value={this.props.answer2} onClick={this.handleClick}>{this.props.answer2}</button></li>
               <li ><button value={this.props.answer3} onClick={this.handleClick}>{this.props.answer3}</button></li>

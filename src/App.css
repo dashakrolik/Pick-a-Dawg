@@ -1,11 +1,26 @@
 
 body {
   /* display: ; */
-  justify-content: center
+  justify-content: center;
+  background-color: white;
+  display: flex;
+  flex-direction: column
+
 }
 
 button {
   cursor: pointer;
+  color: #fff !important;
+  text-transform: uppercase;
+  background: #60a3bc;
+  padding: 30px;
+  border-radius: 50px;
+  display: inline-block;
+  border: none;
+  font-size: 1.5em;
+  width: 300px;
+  margin-left: 50px
+
 }
 
 li {
@@ -13,5 +28,32 @@ li {
 }
 
 img {
-  max-width: 30%;
+  display: inline-block;
+  border-radius: 60%;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 100%
+}
+
+
+.breedOneQuestion {
+  justify-content: center;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  font-size: 2em;
+  margin-left: 120px
+}
+
+.showAnswer {
+  font-size: 2em;
+}
+
+.hint {
+  font-size: 1.5em;
+  margin-left: 90px
+}
+
+.mainButtons {
+  color: white
 }

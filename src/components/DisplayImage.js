@@ -39,7 +39,7 @@ class DisplayImage extends Component {
       // originalAnswerArray: answerArray,
       answerArray: shuffleAnswers,
       correctAnswer: shuffledArray[0]
-  
+
     },
     () => {
       this.getImage(shuffledArray[0])
