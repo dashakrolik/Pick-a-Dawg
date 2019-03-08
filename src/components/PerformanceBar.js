@@ -10,6 +10,7 @@ class PerformanceBar extends Component {
         <div className='level'>LEVEL | {this.props.performanceBar.level}</div>
         {/* <div>(every 10 correct, 1 level up)</div> */}
         <div className='correctAnswerBar'>CORRECT ANSWER | {this.props.performanceBar.correct}</div>
+        <div>WINNING STREAK | {this.props.performanceBar.streak}</div>
         <div className='totalPlayed'>TOTAL PLAYED | {this.props.performanceBar.total}</div>
         <div className="progress-bar">
           {/* "perc || 0" => use perc if defined, otherwise 0 */}
