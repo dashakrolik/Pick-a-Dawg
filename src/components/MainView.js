@@ -7,7 +7,7 @@ import { levelUpGetBreeds } from '../actions/levelUpAction'
 
 
 class MainView extends React.Component {
-  
+
   getHint = (answerString)=> {
     if(this.props.shownBreedList.includes(answerString)) return
 
@@ -62,15 +62,10 @@ class MainView extends React.Component {
          type:'SHOW_CORRECT_ANSWER'
       })
 		} }
-    
-	render(){
-    console.log(this.props, 'props')
 
-    if(this.props.correctAnswer === undefined) {
-      return <h1>Loading</h1>
-    } else if (Math.random() > 0.9) {
+	render(){
+    if(this.props.correctAnswer === undefined) return <h1>Loading</h1>
     return(
-      
       <div className='mainView'>
         <div className='breedImage'>
           <img src={this.props.image} alt=''/>
@@ -86,33 +81,18 @@ class MainView extends React.Component {
             <ShowCorrectAnswer correctAnswer={this.props.correctAnswer} answerBoolean={this.props.answerBoolean}/>
             </div>
         )
-    } 
-    else {
-    return (
-      <div className='mainView'>
-        <div className='breedImage'>
-          <img value={this.props.answer1} src={this.props.image1} onClick={this.handleClick} alt=''/>
-          <img value={this.props.answer1} src={this.props.image2} onClick={this.handleClick} alt=''/>
-          <img value={this.props.answer1} src={this.props.image3} onClick={this.handleClick} alt=''/>
-          <ul>
-            <li> Find a {this.props.correctAnswer} in one of these images </li>
-          </ul>
-            
-          <ShowCorrectAnswer correctAnswer={this.props.correctAnswer} answerBoolean={this.props.answerBoolean}/>
-        </div>
-      </div>
-    )
     }
-  }
+
 }
 
 const mapStateToProps = (state) => {
-  console.log(state, 'state')
+  console.log(state, 'state now')
     return {
         state,
         streak: state.performanceBar.streak,
         shownBreedList: state.shownBreeds,
         answerBoolean: state.answerBoolean
+
     }
 }
 
