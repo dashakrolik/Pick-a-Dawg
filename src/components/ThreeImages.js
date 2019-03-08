@@ -11,7 +11,7 @@ class ThreeImages extends React.Component {
 
 		const elValue = event.target.getAttribute('value')
 		console.log(this.props,' im the props of the image')
-		
+
 		if(elValue === this.props.correctAnswer){
 			console.log('you are right')
 			this.props.dispatch({
@@ -23,12 +23,12 @@ class ThreeImages extends React.Component {
 			// the number can be adjest on when level up (do the amount of clicks minus 1)
 			console.log('i should be shown when streak is 5')
 		 this.props.dispatch(levelUpGetBreeds())
-			 
+
 		 this.props.dispatch({
 			 type:'LEVEL_COUNT',
 			 payload: 1
 		 })
- 
+
 		 this.props.dispatch({
 			 type:'RESET_STREAK',
 			 payload: 0
@@ -49,12 +49,15 @@ class ThreeImages extends React.Component {
 
   render(){
 		return(
+		<div>
 			<ul>
 			<li onClick={this.handleClick}><img value={this.props.image1_breed} src={this.props.image1}/></li>
 			<li onClick={this.handleClick}><img value={this.props.image2_breed} src={this.props.image2}/></li>
 			<li onClick={this.handleClick}><img value={this.props.image3_breed} src={this.props.image3}/></li>
-			<p>WHICH IMAGE IS A {this.props.correctAnswer}</p>
+
 		</ul>
+					<p>Which image is a {this.props.correctAnswer}?</p>
+		</div>
 
 
 
