@@ -50,13 +50,13 @@ class ThreeImages extends React.Component {
   render(){
 		return(
 		<div>
-			<ul>
+			<ul className="threeImagesContainer">
 			<li onClick={this.handleClick}><img value={this.props.image1_breed} src={this.props.image1}/></li>
 			<li onClick={this.handleClick}><img value={this.props.image2_breed} src={this.props.image2}/></li>
 			<li onClick={this.handleClick}><img value={this.props.image3_breed} src={this.props.image3}/></li>
 
 		</ul>
-					<p>Which image is a {this.props.correctAnswer}?</p>
+					<p className="whichImage">Which image is a {this.props.correctAnswer}?</p>
 		</div>
 
 

@@ -29,10 +29,10 @@ li {
 
 img {
   display: inline-block;
-  border-radius: 60%;
+  border-radius: 50%;
   justify-content: center;
-  max-width: 100%;
-  max-height: 100%
+  max-width: 400px;
+  max-height: 400px
 }
 
 
@@ -60,5 +60,17 @@ img {
 
 .threeImagesContainer {
   display: flex;
-  flex-direction: row
+  flex-direction: row;
+  color: white
+}
+
+.whichImage {
+  font-size: 2em;
+  background: #60a3bc;
+  padding: 20px;
+  font-family: Arial;
+  color: white;
+  width:400px;
+  text-align: center;
+  justify-content: center
 }
