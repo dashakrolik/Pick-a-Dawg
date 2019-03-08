@@ -17,15 +17,26 @@ class MainView extends React.Component {
 
 
  handleClick = (event) => {
+  // // console.log(this.props.level % 2)
+  // if(this.props.level % 2){
+  //   setTimeout(this.props.nextQuestion, 2000)
+  //   console.log('nextQuestikn should be called')
+  // } else {
+  //   console.log('threeimages should be called')
+  // }
   setTimeout(this.props.nextQuestion, 2000)
 
   const elValue = event.target.getAttribute('value')
   const correctAnswer = this.props.correctAnswer
-
+  console.log(elValue, 'im the value of clicked li element in handleClick')
   this.props.dispatch({
     type:'HINT_SHOWN_FOR_BREED',
     payload: this.props.correctAnswer
   })
+
+
+
+
 
   if(correctAnswer === elValue){
   
@@ -34,7 +45,7 @@ class MainView extends React.Component {
       payload: true
    })
 
-   if(this.props.streak !==0 && Number.isInteger(this.props.streak/4)){
+   if(this.props.streak !==0 && Number.isInteger(this.props.streak/5)){
      // the number can be adjest on when level up (do the amount of clicks minus 1)
     this.props.dispatch(levelUpGetBreeds())
       
@@ -77,8 +88,7 @@ class MainView extends React.Component {
               <li ><button value={this.props.answer2} onClick={this.handleClick}>{this.props.answer2}</button></li>
               <li ><button value={this.props.answer3} onClick={this.handleClick}>{this.props.answer3}</button></li>
               </ul>
-            
-            <ShowCorrectAnswer correctAnswer={this.props.correctAnswer} answerBoolean={this.props.answerBoolean}/>
+                   <ShowCorrectAnswer correctAnswer={this.props.correctAnswer} answerBoolean={this.props.answerBoolean}/>
             <p>Get a streak of 5 to get to the next level with more dog breeds!</p>
             <p>Use TAB to navigate through the answer (+the rest of the browser) and select with ENTER</p>
             </div>
@@ -88,10 +98,10 @@ class MainView extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state, 'state now')
     return {
         state,
         streak: state.performanceBar.streak,
+        level: state.performanceBar.level,
         shownBreedList: state.shownBreeds,
         answerBoolean: state.answerBoolean
 

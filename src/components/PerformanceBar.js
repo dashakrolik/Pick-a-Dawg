@@ -5,7 +5,6 @@ import './PerformanceBar.css'
 class PerformanceBar extends Component {
   render () {
     const perc = (this.props.performanceBar.correct/this.props.performanceBar.total) * 100
-    console.log(this.props,' im props in performancebar')
     return (
       <div className="timer">
         <div>LEVEL | {this.props.performanceBar.level}</div>

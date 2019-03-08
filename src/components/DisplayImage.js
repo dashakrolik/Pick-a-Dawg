@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import request from 'superagent'
 import { connect } from 'react-redux'
 import MainView from './MainView'
+import ThreeImages from './ThreeImages'
 
 // shuffle array function
 function shuffle(array) {
@@ -27,6 +28,7 @@ class DisplayImage extends Component {
     this.nextQuestion()
   }
 
+
   nextQuestion() {
 
     const shuffledArray = shuffle(this.props.breeds)
@@ -34,11 +36,15 @@ class DisplayImage extends Component {
     const shuffleAnswers = shuffle(answerArray)
 
     this.setState({
+      // originalAnswerArray: answerArray,
       answerArray: shuffleAnswers,
       correctAnswer: shuffledArray[0]
   
     },
-    () => {this.getImage(shuffledArray[0])}
+    () => {
+      this.getImage(shuffledArray[0])
+      this.getThreeImages(answerArray)
+    }
     )
 
     this.props.dispatch({ type: 'SHOW_NOTHING' })
@@ -54,11 +60,46 @@ getImage = (correctAnswer) => {
       .catch(console.err)
   }
 
+getThreeImages = (answerArray) => {
+   request
+     .get(`https://dog.ceo/api/breed/${answerArray[0]}/images/random`)
+     .then(response => JSON.parse(response.text).message)
+    //  .then(res => console.log(res,'‘im the first image’'))
+     .then(res => this.setState({
+       image1:res,
+       image1_breed:answerArray[0]
+     }))
+     .then(
+       request
+       .get(`https://dog.ceo/api/breed/${answerArray[1]}/images/random`)
+       .then(response => JSON.parse(response.text).message)
+      //  .then(res => console.log(res,'‘im the second image’'))
+       .then(res => this.setState({
+         image2:res,
+         image2_breed:answerArray[1]
+       }))
+     )
+     .then(
+       request
+       .get(`https://dog.ceo/api/breed/${answerArray[2]}/images/random`)
+       .then(response => JSON.parse(response.text).message)
+      //  .then(res => console.log(res,'‘im the third image’'))
+       .then(res => this.setState({
+         image3:res,
+         image3_breed:answerArray[2]
+       }))
+     )
+     .catch(console.err)
+ }
+
   render() {
     const { breeds } = this.props
+    // console.log(this.props.level, 'im level in display')
+    // console.log(this.props.level % 2, 'im that % thing')
     if (breeds) {
-      return (
-        <div>
+      if(this.props.level % 2 === 0){
+        return <div>
+          
           <MainView
             correctAnswer={this.state.correctAnswer}
             image={this.state.image}
@@ -66,12 +107,29 @@ getImage = (correctAnswer) => {
             answer1={this.state.answerArray[0]}
             answer2={this.state.answerArray[1]}
             answer3={this.state.answerArray[2]}
-        
-
-            nextQuestion={() => this.nextQuestion()}
+           nextQuestion={() => this.nextQuestion()}
             />
+            </div>
+      } else {
+        return (
+        <div>
+        
+          <ThreeImages
+            correctAnswer={this.state.correctAnswer}
+
+            image1={this.state.image1}
+            image2={this.state.image2}
+            image3={this.state.image3}
+            image1_breed={this.state.image1_breed}
+            image2_breed={this.state.image2_breed}
+            image3_breed={this.state.image3_breed}
+            nextQuestion={() => this.nextQuestion()}
+          />
+
           </div>
-      )
+        )
+      }
+      
     }
     return (
       null
@@ -80,7 +138,9 @@ getImage = (correctAnswer) => {
   }
 
 const mapStateToProps = (state) => {
+  console.log(state,' im the state iin displayimage')
   return {
+    level: state.performanceBar.level,
     breeds: state.levelUpReducer,
     image: state.DisplayContentReducer
   }
