@@ -1,4 +1,4 @@
-export default (state = {correct: 0, total: 0, level: 0, streak: 0}, action = {}) => {
+export default (state = {correct: 0, total: 0, level: 1, streak: 0}, action = {}) => {
 
     switch(action.type){
 	    case 'CORRECT_ANSWER':
