@@ -18,8 +18,7 @@ The webapp must be built using React and Redux.
 1. If a user sees a breed for the first time, the game should give them an easy hint so they can learn the right answer.
 1. The game starts off with only 3 breeds and should gradually increase in difficulty. When the user has a streak of 10 correct answers, the game will add another 3 breeds into the mix, and so on.
 
-# How to get started
-
+# Completed Tasks
 1. Draw some wireframes. That is, simple schematic designs that lay out all the parts of the webapp that need to be built.
 1. Specify the game logic:
    1. List all the actions the user can take. For each interaction, write down what the input information is.
