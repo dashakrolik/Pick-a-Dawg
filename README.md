@@ -3,29 +3,20 @@
 ## Overview
 Build a dog breed memorization game.
 
-You'll be using a free public API called [Dog API](https://dog.ceo/dog-api/documentation/).
+We are using a free public API called [Dog API](https://dog.ceo/dog-api/documentation/).
 
-The webapp must be built using React and Redux.
+The webapp is built using React and Redux.
 
 # Features
 
-1. The webapp must show the user a random picture of a dog (the Dog API provides an endpoint for this purpose), and it must ask the user to choose the correct breed name from a list of 3 options.
-1. When a user makes the correct choice, they proceed to the next question.
-1. If the user makes the wrong choice, the game should show them the right answer, then pause for 2 seconds before proceeding to the next question.
-1. The game must keep track of the user's performance and display a success rate (in percentages) on the page.
-1. Occasionally the user will get a different question type. The game must show them the name of a breed and 3 images of dogs. The user must select the correct image that matches the breed name.
-1. The user should also be able to use the keyboard to select their answer for quicker gameplay.
-1. If a user sees a breed for the first time, the game should give them an easy hint so they can learn the right answer.
-1. The game starts off with only 3 breeds and should gradually increase in difficulty. When the user has a streak of 10 correct answers, the game will add another 3 breeds into the mix, and so on.
-
-# Completed Tasks
-1. Draw some wireframes. That is, simple schematic designs that lay out all the parts of the webapp that need to be built.
-1. Specify the game logic:
-   1. List all the actions the user can take. For each interaction, write down what the input information is.
-   1. Define the shape of your state. Think about all the pieces of information that you have to store in your application state.
-1. Setup a React project and implement the wireframes from the previous step. Fill it with dummy data so you can at least see the GUI.
-1. Push it to GitHub and add your teammates as collaborators. One person will host the code on their account.
-1. Now start working on adding the API connection and implementing the logic as Redux actions and reducers.
+1. The webapp shows the user a random picture of a dog (the Dog API provides an endpoint for this purpose), and it asks the user to choose the correct breed name from a list of 3 options.
+2. When a user makes the correct choice, they proceed to the next question.
+3. If the user makes the wrong choice, the game shows them the right answer, then pauses for 2 seconds before proceeding to the next question.
+4. The game keeps track of the user's performance and displays a success rate (in percentages) on the page.
+5. Occasionally the user gets a different question type. The game shows them the name of a breed and 3 images of dogs. The user must select the correct image that matches the breed name.
+6. The user is able to use the keyboard to select their answer for quicker gameplay (using Tab)
+7. If a user sees a breed for the first time, the game gives them an easy hint so they can learn the right answer.
+8. The game starts off with only 3 breeds and gradually increases in difficulty. When the user has a streak of 10 correct answers, the game adds another 3 breeds into the mix, and so on.
 
 ## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
